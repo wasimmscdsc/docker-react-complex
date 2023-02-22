@@ -12,10 +12,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-      - '8443:80'
-    depends_on:
-      - api
-      - client      
+      - '8443:80'    
   api:
     build: 
       dockerfile: Dockerfile.dev
