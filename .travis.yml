@@ -1,0 +1,16 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t wasimmscdsc/docker-react-complex-test -f ./client/Dockerfile.dev ./client
+
+scripts:
+  - docker run -e CI=true wasimmscdsc/docker-react-complex-test npm run test 
+
+after_success:
+  - docker build -t wasimmscdsc/docker-react-complex-client ./client
+  - docker build -t wasimmscdsc/docker-react-complex-nginx ./nginx
+  - docker build -t wasimmscdsc/docker-react-complex-server ./server
+  - docker build -t wasimmscdsc/docker-react-complex-worker ./worker

@@ -31,7 +31,9 @@ services:
   client:
     build:
       dockerfile: Dockerfile.dev
-      context: ./client    
+      context: ./client
+    environment:
+      - WDS_SOCKET_PORT=0      
   worker:
     build:
       dockerfile: Dockerfile.dev
