@@ -14,3 +14,13 @@ after_success:
   - docker build -t wasimmscdsc/docker-react-complex-nginx ./nginx
   - docker build -t wasimmscdsc/docker-react-complex-server ./server
   - docker build -t wasimmscdsc/docker-react-complex-worker ./worker
+  
+  #Login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Push images to docker hub
+  - docker push wasimmscdsc/docker-react-complex-client
+  - docker push wasimmscdsc/docker-react-complex-nginx
+  - docker push wasimmscdsc/docker-react-complex-server
+  - docker push wasimmscdsc/docker-react-complex-worker
+
