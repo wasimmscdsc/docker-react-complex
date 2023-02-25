@@ -24,3 +24,14 @@ after_success:
   - docker push wasimmscdsc/docker-react-complex-server
   - docker push wasimmscdsc/docker-react-complex-worker
 
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'docker-react-complex'
+  env: 'dockerreactcomplex-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-301446925860'
+  bucket_path: 'bp-docker-react'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
